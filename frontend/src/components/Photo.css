@@ -11,7 +11,7 @@ img {
     padding: 0;
 }
 
-    .container > p {
+    .container > p, button {
         width: auto;
         text-align: center;
         padding: 0 20px 0 20px;
@@ -22,4 +22,8 @@ img {
     border-radius: 15px;
     margin: 5px 100px 5px 100px;
     padding: 10px;
+}
+
+h5 {
+    margin-top: 15px;
 }
