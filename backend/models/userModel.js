@@ -12,7 +12,7 @@ var userSchema = new Schema({
 	'password': {
 		type: String,
 		required: [true, 'Password is required'],
-		minlength: [6, 'Password must be at least 6 characters long']
+		minlength: [4, 'Password must be at least 4 characters long']
 	},
 	'email': {
 		type: String,

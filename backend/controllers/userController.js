@@ -73,6 +73,13 @@ module.exports = {
 
             user.save(function (err, user) {
                 if (err) {
+                    if (err.name === 'ValidationError') {
+                        const messages = Object.values(err.errors).map(error => error.message);
+                        return res.status(400).json({
+                            message: 'Validation error',
+                            errors: messages
+                        });
+                    }
                     return res.status(500).json({
                         message: 'Error when creating user',
                         error: err
