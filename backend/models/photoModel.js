@@ -13,7 +13,8 @@ var photoSchema = new Schema({
 	'createdAt': {
 		type: Date,
 		default: Date.now
-	}
+	},
+    likedBy: [{ type: Schema.Types.ObjectId, ref: 'user' }]
 });
 
 module.exports = mongoose.model('photo', photoSchema);

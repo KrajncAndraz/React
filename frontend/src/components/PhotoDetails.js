@@ -1,10 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
+import { UserContext } from '../userContext';
 import './Photo.css';
 
 function PhotoDetails() {
-    const { id } = useParams(); // Get the photo ID from the URL
+    const { id } = useParams();
     const [photo, setPhoto] = useState(null);
+    const userContext = useContext(UserContext);
 
     useEffect(() => {
         const fetchPhoto = async () => {
@@ -14,6 +16,22 @@ function PhotoDetails() {
         };
         fetchPhoto();
     }, [id]);
+
+    const handleLike = async () => {
+        const res = await fetch(`http://localhost:3001/photos/${id}/like`, {
+            method: 'PUT',
+            credentials: 'include',
+            headers: { 'Content-Type': 'application/json' }
+        });
+
+        if (res.ok) {
+            const updatedPhoto = await res.json();
+            setPhoto(updatedPhoto);
+        } else {
+            const errorData = await res.json();
+            alert(errorData.message || 'An error occurred while liking the photo.');
+        }
+    };
 
     if (!photo) {
         return <div>Loading...</div>;
@@ -29,7 +47,8 @@ function PhotoDetails() {
                 <p>Likes: {photo.likes}</p>
                 <p>|</p>
                 <p>Uploaded: {new Date(photo.createdAt).toLocaleDateString()}</p>
-            {/* Add comments display here if applicable */}
+                {userContext.user && <p>|</p>}
+                {userContext.user && <button onClick={handleLike}>Like</button>}
             </div>
         </div>
     );

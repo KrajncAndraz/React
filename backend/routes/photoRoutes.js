@@ -55,4 +55,6 @@ router.put('/:id', photoController.update);
 
 router.delete('/:id', photoController.remove);
 
+router.put('/:id/like', requiresLogin, photoController.like);
+
 module.exports = router;
