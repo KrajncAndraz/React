@@ -6,8 +6,9 @@ function Register() {
     const [email, setEmail] = useState([]);
     const [error, setError] = useState([]);
 
-    async function Register(e){
+    async function Register(e) {
         e.preventDefault();
+
         const res = await fetch("http://localhost:3001/users", {
             method: 'POST',
             credentials: 'include',
@@ -19,14 +20,10 @@ function Register() {
             })
         });
         const data = await res.json();
-        if(data._id !== undefined){
-            window.location.href="/";
-        }
-        else{
-            setUsername("");
-            setPassword("");
-            setEmail("");
-            setError("Registration failed");
+        if (data._id !== undefined) {
+            window.location.href = "/";
+        } else {
+            setError(data.errors ? data.errors.join(', ') : data.message || "Registration failed");
         }
     }
 
