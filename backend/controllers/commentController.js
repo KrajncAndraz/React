@@ -37,4 +37,4 @@ module.exports = {
                 return res.json(comments);
             });
     }
-}; // change to check jira rule status
+};
