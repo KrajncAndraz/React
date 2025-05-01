@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../userContext';
 import './Photo.css';
+import './Button.css';
 
 function Photo(props) {
     const userContext = useContext(UserContext);

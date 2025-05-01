@@ -13,7 +13,7 @@ function Photos(){
     }, []);
 
     return(
-        <div>
+        <div class="content">
             <h3>Photos:</h3>
             <ul>
                 {photos.map(photo=>(<Photo photo={photo} key={photo._id}></Photo>))}
