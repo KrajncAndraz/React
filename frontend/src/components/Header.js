@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import { UserContext } from "../userContext";
 import { Link } from "react-router-dom";
+import './Header.css';
 
 function Header(props) {
     return (
         <header>
-            <h1>{props.title}</h1>
             <nav>
                 <ul>
                     <li><Link to='/'>Home</Link></li>

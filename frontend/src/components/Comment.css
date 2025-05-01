@@ -1,0 +1,21 @@
+.comments-section {
+    margin: 25px 100px 25px 100px;
+}
+
+.comment {
+    width: 98%;
+}
+
+.comment, .new {
+    border: 3px solid #ccc;
+    border-radius: 15px;
+    margin: 5px 0 5px 0;
+    padding: 10px;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
